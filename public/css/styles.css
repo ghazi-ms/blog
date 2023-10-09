@@ -1,0 +1,7 @@
+a {
+    text-decoration: none;
+}
+
+.special li a:hover {
+    color: #1abc9c !important;
+}

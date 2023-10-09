@@ -1,0 +1,162 @@
+<%- include('partials/header') %>
+
+<!-- The modal -->
+<div
+  class="modal fade"
+  id="modalSheet"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="modalSheetLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalSheetLabel">Add new post</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form action="/compose" method="post">
+          <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" />
+          </div>
+          <div class="mb-3">
+            <label for="postmassage" class="form-label">Post</label>
+            <textarea
+              class="form-control"
+              id="postmassage"
+              rows="3"
+              name="postmassage"
+            ></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Add Post</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="position-fixed bottom-0 end-0 mb-3 me-3">
+  <button
+    class="btn btn-primary py-2 d-flex align-items-center rounded-circle"
+    type="button"
+    data-bs-toggle="modal"
+    data-bs-target="#modalSheet"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="36"
+      height="36"
+      fill="currentColor"
+      class="bi bi-plus-lg"
+      viewBox="0 0 16 16"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"
+      />
+    </svg>
+  </button>
+</div>
+
+<div class="container mb-4 text-center">
+  <h1><%= title %></h1>
+</div>
+
+<!-- home.ejs -->
+<% if (postsList.length == 0) { %>
+<div class="col text-center" style="margin-top: 25%; margin-bottom: 20%">
+  <div class="rounded shadow bg-body-tertiary ps-2 pe-2">
+    <div class="post">
+      <h1 class="mb-0">Nothing is new !</h1>
+
+      <p class="mt-0">
+        You can add more posts or add more friends to see more posts.
+      </p>
+    </div>
+  </div>
+</div>
+<% }else { %>
+<div class="row row-cols-1 row-cols-md-2 g-3">
+  <% postsList.forEach(posts => { %>
+  <div class="col mb-4">
+    <div class="rounded shadow bg-body-tertiary ps-2 pe-2 pb-2">
+      <div class="post">
+        <h1 class="mb-0">
+          <form action="/delete" method="post" class="d-inline">
+            <input type="hidden" name="username" value="<%= username %>" />
+            <button
+              class="btn btn-danger rounded-pill p-0 m-0"
+              type="submit"
+              value="<%= posts._id %>"
+              id="postId"
+              name="postId"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                fill="currentColor"
+                class="bi bi-x-circle-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"
+                />
+              </svg>
+            </button>
+          </form>
+          <%= posts.title %>
+        </h1>
+
+        <% if (posts.post.length >= 250) { %>
+
+        <div
+          class="mb-4 mt-0 overflow-auto"
+          style="white-space: pre-line; word-wrap: break-word"
+        >
+          <p class="mb-0">
+            <%= posts.post.substring(0, 250).concat(' ...'); %>
+            <span class="badge bg-light link-underline-opacity-0"
+              ><a href="/post/<%= posts._id %>">Read More</a></span
+            >
+          </p>
+        </div>
+        <div class="mt-0 mb-4">
+          <span class="badge bg-info"><%= username %></span>
+          <span class="badge bg-secondary"><%= posts.date %></span>
+        </div>
+        <% } else { %>
+
+        <div
+          class="mb-4 mt-0 overflow-auto"
+          style="white-space: pre-line; word-wrap: break-word"
+        >
+          <p class="mb-0"><%= posts.post; %></p>
+        </div>
+        <div class="mt-0 mb-4">
+          <span class="badge bg-secondary"><%= posts.date %></span>
+          <span class="badge bg-info"><%= username %></span>
+        </div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+  <% }) %>
+</div>
+<% } %> <%- include('partials/footer') %>

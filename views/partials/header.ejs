@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Daily Journal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  
+
+  <header class="border-bottom bg-body-tertiary">
+    <div
+      class="container-fluid d-grid gap-3 align-items-center"
+      style="grid-template-columns: 2fr 2fr"
+    >
+      <div>
+        <a
+          href="/"
+          class="d-flex align-items-center col-lg-4 mb-1 mb-lg-0 link-body-emphasis text-decoration-none"
+        >
+          <img
+            src="/logos/quillLogo.svg"
+            alt="quill Logo"
+            height="120"
+            width="110"
+          />
+          <span class="fs-md-4">DAILY JOURNAL</span>
+        </a>
+      </div>
+
+      <div
+        class="d-flex align-items-center ms-md-auto"
+        id="navbarSupportedContent"
+      >
+        <ul class="nav nav-pills special">
+          <li class="nav-item">
+            <a class="nav-link fs-5 text-black" aria-current="page" href="/"
+              >Feed</a
+            >
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link fs-5 text-black" href="/aboutUs">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link fs-5 text-black" href="/contact">Contact us</a>
+          </li> -->
+        </ul>
+        <div class="flex-shrink-0 dropdown ms-md-auto">
+          <a
+            href="#"
+            class="d-block link-body-emphasis text-decoration-none dropdown-toggle"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="42"
+              height="42"
+              fill="currentColor"
+              class="bi bi-person-circle"
+              viewBox="0 0 16 16"
+            >
+              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+              <path
+                fill-rule="evenodd"
+                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
+              />
+            </svg>
+          </a>
+          <ul class="dropdown-menu text-small shadow">
+            <li><a class="dropdown-item" href="/compose">New post...</a></li>
+            <li><a class="dropdown-item" href="/delete">Delete post</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="/logout">Sign out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <body >
+    <div class="container vh-100">
+  
